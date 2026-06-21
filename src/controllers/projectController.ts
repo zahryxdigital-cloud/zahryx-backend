@@ -66,7 +66,7 @@ export const deleteProject = async (req: Request, res: Response) => {
     }
     
     // Clean up images
-    await StorageService.deleteFile(project.coverImage);
+    if (project.coverImage) await StorageService.deleteFile(project.coverImage);
     if (project.beforeImage) await StorageService.deleteFile(project.beforeImage);
     if (project.afterImage) await StorageService.deleteFile(project.afterImage);
 
